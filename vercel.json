@@ -1,16 +1,4 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": ".output/public",
-  "framework": null,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/server"
-    }
-  ],
-  "functions": {
-    "api/server.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "outputDirectory": "dist"
 }
