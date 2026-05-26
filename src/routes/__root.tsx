@@ -75,19 +75,31 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Tiny Spoon Foods — Clean Baby Food, Made in Calgary" },
-      { name: "description", content: "Premium, Canadian-made purees, meals and snacks crafted with clean ingredients for every stage of your baby's journey." },
+      {
+        name: "description",
+        content:
+          "Premium, Canadian-made purees, meals and snacks crafted with clean ingredients for every stage of your baby's journey.",
+      },
       { name: "author", content: "Tiny Spoon Foods" },
       { property: "og:title", content: "Tiny Spoon Foods — Clean Baby Food, Made in Calgary" },
-      { property: "og:description", content: "Premium, Canadian-made purees, meals and snacks crafted with clean ingredients for every stage of your baby's journey." },
+      {
+        property: "og:description",
+        content:
+          "Premium, Canadian-made purees, meals and snacks crafted with clean ingredients for every stage of your baby's journey.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "icon", href: "/favicon.ico" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

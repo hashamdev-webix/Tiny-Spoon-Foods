@@ -7,9 +7,11 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-1">
           <div className="flex items-center gap-2">
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground font-display text-lg">
-              t
-            </span>
+            <img
+              src="/logo.png"
+              alt="Tiny Spoon Foods"
+              className="h-10 w-10 rounded-full object-cover"
+            />
             <span className="font-display text-xl">Tiny Spoon Foods</span>
           </div>
           <p className="mt-4 text-sm text-background/70 leading-relaxed">

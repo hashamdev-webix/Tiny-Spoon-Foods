@@ -84,14 +84,22 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(148,123,103,0.08)]" : "bg-background/60 backdrop-blur-md"
+        scrolled
+          ? "bg-background/90 backdrop-blur-xl shadow-[0_4px_30px_rgba(148,123,103,0.08)]"
+          : "bg-background/60 backdrop-blur-md"
       }`}
       onMouseLeave={() => setOpen(null)}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
         <Link to="/" className="flex items-center gap-2 group">
-          <span className="grid h-10 w-10 place-items-center rounded-full bg-primary text-primary-foreground font-display text-lg">t</span>
-          <span className="font-display text-xl tracking-tight">Tiny Spoon <span className="text-primary">Foods</span></span>
+          <img
+            src="/logo.png"
+            alt="Tiny Spoon Foods"
+            className="h-10 w-10 rounded-full object-cover"
+          />
+          <span className="font-display text-xl tracking-tight">
+            Tiny Spoon <span className="text-primary">Foods</span>
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1">
@@ -102,16 +110,25 @@ export function Header() {
               className="group inline-flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
               {m.label}
-              <ChevronDown size={14} className={`transition-transform ${open === m.key ? "rotate-180" : ""}`} />
+              <ChevronDown
+                size={14}
+                className={`transition-transform ${open === m.key ? "rotate-180" : ""}`}
+              />
             </button>
           ))}
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link to="/shop" className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+          <Link
+            to="/shop"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
             <ShoppingBag size={16} /> Shop
           </Link>
-          <button onClick={() => setMobile(true)} className="lg:hidden rounded-full p-2 hover:bg-muted">
+          <button
+            onClick={() => setMobile(true)}
+            className="lg:hidden rounded-full p-2 hover:bg-muted"
+          >
             <Menu size={22} />
           </button>
         </div>
@@ -140,22 +157,38 @@ export function Header() {
       <AnimatePresence>
         {mobile && (
           <motion.div
-            initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
             className="fixed inset-0 z-50 bg-background lg:hidden overflow-y-auto"
           >
             <div className="flex items-center justify-between p-5 border-b">
               <span className="font-display text-xl">Menu</span>
-              <button onClick={() => setMobile(false)} className="rounded-full p-2 hover:bg-muted"><X /></button>
+              <button onClick={() => setMobile(false)} className="rounded-full p-2 hover:bg-muted">
+                <X />
+              </button>
             </div>
             <div className="p-5 space-y-6">
               {MENUS.map((m) => (
                 <div key={m.key}>
-                  <Link to={m.to} onClick={() => setMobile(false)} className="font-display text-2xl text-primary">{m.label}</Link>
+                  <Link
+                    to={m.to}
+                    onClick={() => setMobile(false)}
+                    className="font-display text-2xl text-primary"
+                  >
+                    {m.label}
+                  </Link>
                   <ul className="mt-2 space-y-1">
                     {m.links.map((l) => (
                       <li key={l.label}>
-                        <Link to={l.to} onClick={() => setMobile(false)} className="block py-1.5 text-foreground/70">{l.label}</Link>
+                        <Link
+                          to={l.to}
+                          onClick={() => setMobile(false)}
+                          className="block py-1.5 text-foreground/70"
+                        >
+                          {l.label}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -173,17 +206,25 @@ function MegaPanel({ item }: { item: MenuItem }) {
   return (
     <div className="grid md:grid-cols-[1.2fr_1fr]">
       <div className="p-8 md:p-10">
-        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">{item.label}</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+          {item.label}
+        </p>
         <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
           {item.links.map((l, i) => (
             <motion.li
               key={l.label}
-              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.04 }}
             >
-              <Link to={l.to} className="group flex items-center justify-between rounded-xl px-3 py-2.5 hover:bg-muted transition-colors">
+              <Link
+                to={l.to}
+                className="group flex items-center justify-between rounded-xl px-3 py-2.5 hover:bg-muted transition-colors"
+              >
                 <span className="font-medium">{l.label}</span>
-                <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">→</span>
+                <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary">
+                  →
+                </span>
               </Link>
             </motion.li>
           ))}
@@ -191,9 +232,14 @@ function MegaPanel({ item }: { item: MenuItem }) {
       </div>
       {item.feature && (
         <div className="relative bg-gradient-to-br from-secondary/30 via-accent/40 to-primary/20 p-10 flex flex-col justify-end min-h-[220px]">
-          <h4 className="font-display text-2xl leading-snug text-foreground max-w-xs">{item.feature.title}</h4>
+          <h4 className="font-display text-2xl leading-snug text-foreground max-w-xs">
+            {item.feature.title}
+          </h4>
           {item.feature.cta && (
-            <Link to={item.feature.cta.to} className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:bg-foreground/90 transition-colors">
+            <Link
+              to={item.feature.cta.to}
+              className="mt-5 inline-flex w-fit items-center gap-2 rounded-full bg-foreground px-5 py-2.5 text-sm font-medium text-background hover:bg-foreground/90 transition-colors"
+            >
               {item.feature.cta.label} →
             </Link>
           )}
